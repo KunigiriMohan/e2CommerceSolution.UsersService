@@ -1,5 +1,7 @@
 using eCommerce.Infrastructure;
 using eCommerce.Core;
+using e2Commerce.API.Middlewares;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,13 @@ builder.Services.AddCore();
 builder.Services.AddControllers();
     
 var app = builder.Build();
+
+app.UseExceptionHandlingMiddleware();
+app.UseRouting();
+app.UseAuthentication();
+
+
+app.MapControllers();
 
 app.MapGet("/", () => "Hello World!");
 
