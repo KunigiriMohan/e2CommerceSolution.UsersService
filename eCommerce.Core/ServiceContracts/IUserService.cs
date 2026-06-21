@@ -10,6 +10,12 @@ public interface IUserService
     Task<AuthenticationResponse?> Login(LoginRequest request);
 
     Task<AuthenticationResponse?> Register(RegisterRequest request);
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="UserID"></param>
+    /// <returns></returns>
+    Task<UserDTO?> GetUserByUserID(Guid? UserID);
 
 }
 

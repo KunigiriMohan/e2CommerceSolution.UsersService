@@ -27,4 +27,9 @@ RUN dotnet publish "./e2Commerce.API.csproj" -c $BUILD_CONFIGURATION -o /app/pub
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV POSTGRES_HOST=localhost
+ENV POSTGRES_PASSWORD=admin
+ENV POSTGRES_DATABASE=e2commerceUsers
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PORT=5432
 ENTRYPOINT ["dotnet", "e2Commerce.API.dll"]
